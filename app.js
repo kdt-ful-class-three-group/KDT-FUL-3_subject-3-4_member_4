@@ -3,7 +3,7 @@ import http from "http";
 
 const server = http.createServer(function (request, response) {
     if (request.method === "GET") {
-        if (request.url === "/1") {
+        if (request.url === "/") {
             const mainPage = fs.readFileSync("index.html");
             response.writeHead(200, { "content-type": "text/html" });
             response.end(mainPage);
@@ -15,12 +15,12 @@ const server = http.createServer(function (request, response) {
         }
     }
     if (request.method === "POST") {
-        if (request.url === "/1") {
+        if (request.url === "/") {
             const mainPage = fs.readFileSync("index.html");
             response.writeHead(200, { "content-type": "text/html" });
             response.end(mainPage);
         } else {
-            // 서버 요청 예외처리
+            // 요청 예외처리
             const mainPage = fs.readFileSync("err.html");
             response.writeHead(200, { "content-type": "text/html" });
             response.end(mainPage);
