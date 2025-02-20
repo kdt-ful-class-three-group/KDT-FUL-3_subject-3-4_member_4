@@ -1,12 +1,12 @@
 import fs from "fs";
 import http from "http";
 import qs from "querystring";
+import path from "path";
 import { writeFile } from "./public/writeFile.js";
 
-let body = "";
 const server = http.createServer(function (request, response) {
     const url = request.url;
-
+    console.log(url);
     if (request.method === "GET") {
         if (url === "/") {
             const mainPage = fs.readFileSync("index.html");
@@ -15,12 +15,13 @@ const server = http.createServer(function (request, response) {
         } else {
             console.log(url);
             // 서버 요청 예외처리
-            const mainPage = fs.readFileSync("geterr.html");
+            const mainPage = fs.readFileSync("errPages/geterr.html");
             response.writeHead(200, { "content-type": "text/html" });
             response.end(mainPage);
         }
     }
     if (request.method === "POST") {
+        let body = "";
         if (url === "/") {
             const mainPage = fs.readFileSync("index.html");
             response.writeHead(200, { "content-type": "text/html" });
@@ -33,12 +34,12 @@ const server = http.createServer(function (request, response) {
                 writeFile(body);
             });
             console.log(url);
-            const mainPage = fs.readFileSync("notice.html");
+            const mainPage = fs.readFileSync("pages/notice.html");
             response.writeHead(200, { "content-type": "text/html" });
             response.end(mainPage);
         } else {
             // 요청 예외처리
-            const mainPage = fs.readFileSync("posterr.html");
+            const mainPage = fs.readFileSync("errPages/posterr.html");
             response.writeHead(200, { "content-type": "text/html" });
             response.end(mainPage);
         }
