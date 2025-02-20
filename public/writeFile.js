@@ -1,6 +1,7 @@
 import qs from "querystring";
+import fs from "fs";
 import { readFile } from "./readFile.js";
-function writeFile() {
+function writeFile(body) {
     const dataJsonQsStr = qs.parse(body);
     const dataJsonQs = JSON.stringify(dataJsonQsStr);
     const dataJsonQsParse = JSON.parse(dataJsonQs);
