@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="public/css/style.css">
 </head>
 
 <body>
@@ -17,17 +18,18 @@
     <input type="text" name="inputName">
     <button type="submit">Submit</button>
   </form>
+  <div id="root">
+
+  </div>
   <script>
     let xhr = new XMLHttpRequest();
     xhr.open("GET", "data.json", true);
     xhr.onreadystatechange = function () {
+      let divDom = document.getElementById("root");
       if (xhr.readyState === 4 && xhr.status === 200) {
         let dataList = JSON.parse(xhr.responseText);
-        // let dataObjJson = JSON.stringify(dataList)
-        console.log(dataList[0].inputName);
         for (let index = 0; index < dataList.length; index++) {
-          console.log(dataList[index].inputName)
-
+          divDom.innerHTML += ` <div> <p>${index}</p><p> ${dataList[index].inputName}</p></div>`
         }
       }
     };

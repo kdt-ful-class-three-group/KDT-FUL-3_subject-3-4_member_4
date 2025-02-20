@@ -2,7 +2,7 @@ import fs from "fs";
 import http from "http";
 import qs from "querystring";
 import path from "path";
-import { writeFile } from "./public/writeFile.js";
+import { writeFile } from "./components/writeFile.js";
 
 const server = http.createServer(function (request, response) {
     const url = request.url;
@@ -12,9 +12,9 @@ const server = http.createServer(function (request, response) {
             const mainPage = fs.readFileSync("index.html");
             response.writeHead(200, { "content-type": "text/html" });
             response.end(mainPage);
-        } else if (url === "public/api.js") {
+        } else if (url === "components/api.js") {
             console.log(url);
-            const mainPage = fs.readFileSync("public/api.js");
+            const mainPage = fs.readFileSync("components/api.js");
             response.writeHead(
                 200,
                 { "content-type": "text/javascript" },
@@ -33,6 +33,11 @@ const server = http.createServer(function (request, response) {
                     console.log("성공임둥");
                 }
             );
+            response.end(mainPage);
+        } else if (url === "style") {
+            console.log(url);
+            const mainPage = fs.readFileSync("public/css/style.css");
+            response.writeHead(200, { "content-type": "text/css" });
             response.end(mainPage);
         } else {
             console.log(url);
@@ -70,5 +75,4 @@ const server = http.createServer(function (request, response) {
 
 server.listen(8000, () => {
     console.log("8000번 서버 실행 http://localhost:8000");
-    // api();
 });
