@@ -17,7 +17,22 @@
     <input type="text" name="inputName">
     <button type="submit">Submit</button>
   </form>
-  <script src="/public/api.js"></script>
+  <script>
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "data.json", true);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        let dataList = JSON.parse(xhr.responseText);
+        // let dataObjJson = JSON.stringify(dataList)
+        console.log(dataList[0].inputName);
+        for (let index = 0; index < dataList.length; index++) {
+          console.log(dataList[index].inputName)
+
+        }
+      }
+    };
+    xhr.send();
+  </script>
 </body>
 
 </html>

@@ -14,8 +14,25 @@ const server = http.createServer(function (request, response) {
             response.end(mainPage);
         } else if (url === "public/api.js") {
             console.log(url);
-            const mainPage = fs.readFileSync("api.js");
-            response.writeHead(200, { "content-type": "text/javascript" });
+            const mainPage = fs.readFileSync("public/api.js");
+            response.writeHead(
+                200,
+                { "content-type": "text/javascript" },
+                () => {
+                    console.log("성공임둥");
+                }
+            );
+            response.end(mainPage);
+        } else if (url === "/data.json") {
+            console.log(url);
+            const mainPage = fs.readFileSync("data.json");
+            response.writeHead(
+                200,
+                { "content-type": "application/json" },
+                () => {
+                    console.log("성공임둥");
+                }
+            );
             response.end(mainPage);
         } else {
             console.log(url);
@@ -53,4 +70,5 @@ const server = http.createServer(function (request, response) {
 
 server.listen(8000, () => {
     console.log("8000번 서버 실행 http://localhost:8000");
+    // api();
 });
