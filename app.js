@@ -12,6 +12,11 @@ const server = http.createServer(function (request, response) {
             const mainPage = fs.readFileSync("index.html");
             response.writeHead(200, { "content-type": "text/html" });
             response.end(mainPage);
+        } else if (url === "public/api.js") {
+            console.log(url);
+            const mainPage = fs.readFileSync("api.js");
+            response.writeHead(200, { "content-type": "text/javascript" });
+            response.end(mainPage);
         } else {
             console.log(url);
             // 서버 요청 예외처리
