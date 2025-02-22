@@ -7,7 +7,7 @@ function writeFile(body) {
 
     // 현재 시간 추가
     const now = new Date();
-    dataJsonQsStr.timestamp = now.toISOString().split("T")[0]; // 연월일만 표출
+    dataJsonQsStr.timestamp = now.toISOString().split("T")[0]; // 연월일만
 
     const dataJsonQs = JSON.stringify(dataJsonQsStr);
     const dataJsonQsParse = JSON.parse(dataJsonQs);

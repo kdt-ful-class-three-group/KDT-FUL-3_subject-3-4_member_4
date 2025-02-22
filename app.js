@@ -16,7 +16,7 @@ const server = http.createServer(function (request, response) {
             console.log(url);
             const mainPage = fs.readFileSync("components/api.js");
             response.writeHead(200, {
-                "Content-Type": "application/javascript",
+                "Content-Type": "application/javascript",                 
             });
             response.end(mainPage);
         } else if (url === "/data.json") {
