@@ -12,16 +12,12 @@ const server = http.createServer(function (request, response) {
             const mainPage = fs.readFileSync("index.html");
             response.writeHead(200, { "content-type": "text/html" });
             response.end(mainPage);
-        } else if (url === "components/api.js") {
+        } else if (url === "/components/api.js") {
             console.log(url);
             const mainPage = fs.readFileSync("components/api.js");
-            response.writeHead(
-                200,
-                { "content-type": "text/javascript" },
-                () => {
-                    console.log("성공임둥");
-                }
-            );
+            response.writeHead(200, {
+                "Content-Type": "application/javascript",
+            });
             response.end(mainPage);
         } else if (url === "/data.json") {
             console.log(url);
@@ -34,7 +30,7 @@ const server = http.createServer(function (request, response) {
                 }
             );
             response.end(mainPage);
-        } else if (url === "style") {
+        } else if (url === "/public/css/style.css") {
             console.log(url);
             const mainPage = fs.readFileSync("public/css/style.css");
             response.writeHead(200, { "content-type": "text/css" });

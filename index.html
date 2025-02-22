@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="public/css/style.css">
+  <link rel="stylesheet" href="./public/css/style.css">
 </head>
 
 <body>
@@ -18,22 +18,26 @@
     <input type="text" name="inputName">
     <button type="submit">Submit</button>
   </form>
-  <div id="root">
+  <div class="tableWrap" id="tableList">
+    <div>
+      <p>NO</p>
+      <p>제목</p>
+      <p>작성시간</p>
+    </div>
+    <!-- <div>
+      <p>1</p>
+      <p>게시글입니다.</p>
+      <p>2025-02-12</p>
+    </div> -->
+  </div>
+  <div id="root" class="table">
 
   </div>
   <script>
-    let xhr = new XMLHttpRequest();
-    xhr.open("GET", "data.json", true);
-    xhr.onreadystatechange = function () {
-      let divDom = document.getElementById("root");
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        let dataList = JSON.parse(xhr.responseText);
-        for (let index = 0; index < dataList.length; index++) {
-          divDom.innerHTML += ` <div> <p>${index}</p><p> ${dataList[index].inputName}</p></div>`
-        }
-      }
-    };
-    xhr.send();
+
+  </script>
+  <script type="module" src="./components/api.js"></script>
+  <script>
   </script>
 </body>
 

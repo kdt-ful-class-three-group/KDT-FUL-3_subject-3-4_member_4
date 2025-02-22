@@ -1,3 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background-color: #999;
+    background-color: #ffdd60;
+}
+
+.table div {
+    display: flex;
+    align-items: center;
+}
+.tableWrap {
+    margin-top: 20px;
+}
+.tableWrap > div {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid #999;
+}
+.tableWrap > div p {
+    width: 100%;
+
+    text-align: center;
 }
