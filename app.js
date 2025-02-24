@@ -16,15 +16,8 @@ const server = http.createServer(function (request, response) {
             response.end(mainPage);
         } else if (url.endsWith(".js")) {
             console.log(url);
-<<<<<<< HEAD
-            const mainPage = fs.readFileSync("components/api.js");
-            response.writeHead(200, {
-                "Content-Type": "application/javascript",                 
-            });
-=======
             const mainPage = fs.readFileSync(`.${url}`);
             response.writeHead(200, { "content-type": "text/javascript" });
->>>>>>> kim-jaeSeung/issue4
             response.end(mainPage);
         } else if (url === "/data.json") {
             const mainPage = fs.readFileSync("data.json");
