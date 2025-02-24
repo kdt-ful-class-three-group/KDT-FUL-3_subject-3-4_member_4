@@ -5,6 +5,7 @@ function readFile() {
     if (dataJsonFile !== "") {
         const dataObj = JSON.parse(dataJsonFile);
         dataObj.forEach((element) => {
+            // console.log(element);
             arrJson.push(element);
         });
     }
