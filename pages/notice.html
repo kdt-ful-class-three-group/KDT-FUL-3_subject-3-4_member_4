@@ -5,13 +5,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="./public/css/style.css">
 </head>
 
 <body>
   <form method="POST">
+    <!-- <div id="tableList" class="table">
+
+    </div> -->
+    <div id="detailTable">
+
+    </div>
     <input type="text" placeholder="작성해주세요.">
     <button type="submit">저장</button>
   </form>
+
+  <script>
+    fetch('./data.json')
+    .then((response) => { return response.json() })
+    .then((data) => {
+      console.log(data);
+      const detailTable = document.getElementById('detailTable');
+      for (let index = 0; index < data.length; index++) {
+        detailTable.innerHTML += `
+          <div>
+            <p>${data[index].id}</p>
+            <p> ${data[index].inputName}</p>
+            <p> ${data[index].timestamp}</p>
+          </div>
+        `;
+      }
+    })
+  </script>
+  <!-- <script type="module" src="./components/api.js"></script> -->
 </body>
 
 </html>
