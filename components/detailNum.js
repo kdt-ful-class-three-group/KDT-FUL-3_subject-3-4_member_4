@@ -1,5 +1,5 @@
-async function detailNum(num) {
-   fetch("http://localhost:8000/data.json")
+function detailNum(num) {
+    fetch("http://localhost:8000/data.json")
         .then((response) => {
             return response.json();
         })
@@ -10,13 +10,13 @@ async function detailNum(num) {
             console.log(detailTable);
             detailTable.innerHTML += `
               <div>
-                <p>${data[1].id}</p>
-                <p> ${data[1].inputName}</p>
-                <p> ${data[1].timestamp}</p>
+                <p>${data[num].id}</p>
+                <p> ${data[num].inputName}</p>
+                <p> ${data[num].timestamp}</p>
               </div>
             `;
         });
 }
-detailNum();
+// detailNum();
 
 export { detailNum };

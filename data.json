@@ -1,101 +1,93 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 [
-  {
-    "inputName": "qwewe"
-  },
-  {
-    "inputName": "qweqwe"
-  },
-  {
-    "inputName": "qweqwe"
-  },
-  {
-    "inputName": "qwewqe"
-  },
-  {
-    "inputName": "qeeee"
-  },
-  {
-    "inputName": "qeqe"
-  },
-  {
-    "inputName": "eqwqeqwe"
-  },
-  {
-    "inputName": "werqwr"
-  },
-  {
-    "inputName": "gpgp"
-  },
-  {
-    "inputName": "eqweqwe"
-  },
-  {
-    "inputName": "wqeqwe"
-  },
-  {
-    "inputName": "shfkgshgf"
-  },
-  {
-    "inputName": "wqeqwe",
-    "time": ""
-  },
-  {
-    "inputName": "eqwe",
-    "time": ""
-  },
-  {
-    "inputName": "ㅂㅈㄷㅂㅈㄷ",
-    "time": ""
-  },
-  {
-    "inputName": "ㄷㅈㅂㄱㅂㅈㄷㄱ",
-    "time": "",
-    "timestamp": "2025-02-22T08:02:03.519Z"
-  },
-  {
-    "inputName": "ㅈㅂㄷㄷㅈ",
-    "timestamp": "2025-02-22T08:03:06.552Z"
-  },
-  {
-    "inputName": "ㅂㅈㄷㅂㅈㄷ",
-    "timestamp": "2025-02-22"
-  },
-  {
-    "inputName": "ㅈㅂㄷㅂㅈㄷ",
-    "timestamp": "2025-02-22"
-  }
+    {
+        "inputName": "qwewe"
+    },
+    {
+        "inputName": "qweqwe"
+    },
+    {
+        "inputName": "qweqwe"
+    },
+    {
+        "inputName": "qwewqe"
+    },
+    {
+        "inputName": "qeeee"
+    },
+    {
+        "inputName": "qeqe"
+    },
+    {
+        "inputName": "eqwqeqwe"
+    },
+    {
+        "inputName": "werqwr"
+    },
+    {
+        "inputName": "gpgp"
+    },
+    {
+        "inputName": "eqweqwe"
+    },
+    {
+        "inputName": "wqeqwe"
+    },
+    {
+        "inputName": "shfkgshgf"
+    },
+    {
+        "inputName": "wqeqwe",
+        "time": ""
+    },
+    {
+        "inputName": "eqwe",
+        "time": ""
+    },
+    {
+        "inputName": "ㅂㅈㄷㅂㅈㄷ",
+        "time": ""
+    },
+    {
+        "inputName": "ㄷㅈㅂㄱㅂㅈㄷㄱ",
+        "time": "",
+        "timestamp": "2025-02-22T08:02:03.519Z"
+    },
+    {
+        "inputName": "ㅈㅂㄷㄷㅈ",
+        "timestamp": "2025-02-22T08:03:06.552Z"
+    },
+    {
+        "inputName": "ㅂㅈㄷㅂㅈㄷ",
+        "timestamp": "2025-02-22"
+    },
+    {
+        "inputName": "ㅈㅂㄷㅂㅈㄷ",
+        "timestamp": "2025-02-22"
+    },
+
+    {
+        "inputName": "ㅂㅈㄷㅂㅈㅂㅈ",
+        "id": 1,
+        "timestamp": "2025-02-24"
+    },
+    {
+        "inputName": "qweqwew",
+        "id": 2,
+        "timestamp": "2025-02-24"
+    },
+    {
+        "inputName": "qeqweqwe",
+        "id": 3,
+        "timestamp": "2025-02-24"
+    },
+    {
+        "inputName": "qweqweqwe",
+        "id": 4,
+        "timestamp": "2025-02-24"
+    },
+    {
+        "inputName": "qweqweqwe",
+        "id": 5,
+        "timestamp": "2025-02-24"
+    }
 ]
-=======
-[{"inputName":"weqwqwe","id":3,"timestamp":"2025-02-24"}]
->>>>>>> kim-jaeseung/issue4
-=======
-[
-  {
-    "inputName": "ㅂㅈㄷㅂㅈㅂㅈ",
-    "id": 1,
-    "timestamp": "2025-02-24"
-  },
-  {
-    "inputName": "qweqwew",
-    "id": 2,
-    "timestamp": "2025-02-24"
-  },
-  {
-    "inputName": "qeqweqwe",
-    "id": 3,
-    "timestamp": "2025-02-24"
-  },
-  {
-    "inputName": "qweqweqwe",
-    "id": 4,
-    "timestamp": "2025-02-24"
-  },
-  {
-    "inputName": "qweqweqwe",
-    "id": 5,
-    "timestamp": "2025-02-24"
-  }
-]
->>>>>>> kim-jaeSeung/issue4
