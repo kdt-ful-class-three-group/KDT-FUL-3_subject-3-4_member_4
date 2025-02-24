@@ -4,6 +4,7 @@ import qs from "querystring";
 import path from "path";
 import { writeFile } from "./components/writeFile.js";
 import { readFile } from "./components/readFile.js";
+import { detailNum } from "./components/detailNum.js";
 
 const server = http.createServer(function (request, response) {
     const url = request.url;
@@ -13,12 +14,17 @@ const server = http.createServer(function (request, response) {
             const mainPage = fs.readFileSync("index.html");
             response.writeHead(200, { "content-type": "text/html" });
             response.end(mainPage);
-        } else if (url === "/components/api.js") {
+        } else if (url.endsWith(".js")) {
             console.log(url);
+<<<<<<< HEAD
             const mainPage = fs.readFileSync("components/api.js");
             response.writeHead(200, {
                 "Content-Type": "application/javascript",                 
             });
+=======
+            const mainPage = fs.readFileSync(`.${url}`);
+            response.writeHead(200, { "content-type": "text/javascript" });
+>>>>>>> kim-jaeSeung/issue4
             response.end(mainPage);
         } else if (url === "/data.json") {
             const mainPage = fs.readFileSync("data.json");
@@ -36,13 +42,22 @@ const server = http.createServer(function (request, response) {
             response.writeHead(200, { "content-type": "text/css" });
             response.end(mainPage);
         } else if (url.startsWith("/deletePage")) {
-            // delete page
-            // console.log(request.params.id);
             const deleteNum = num(url);
             deleteJsonNum(deleteNum);
-            // const num = url.
             response.writeHead(302, { location: "/" });
             response.end();
+        } else if (url.startsWith("/modifyPage")) {
+            const deleteNum = num(url);
+            deleteJsonNum(deleteNum);
+            response.writeHead(302, { location: "/" });
+            response.end();
+        } else if (url.startsWith("/detailPage")) {
+            const mainPage = fs.readFileSync("pages/notice.html");
+            response.writeHead(200, { "content-type": "text/html" });
+            const deleteNum = num(url);
+            // detailNum(deleteNum);
+            //* 해당 번호만 뽑아내는거
+            response.end(mainPage);
         } else {
             console.log(url);
             // 서버 요청 예외처리
@@ -54,6 +69,12 @@ const server = http.createServer(function (request, response) {
     if (request.method === "POST") {
         let body = "";
         if (url === "/") {
+            request.on("data", function (data) {
+                body += data;
+            });
+            request.on("end", function () {
+                writeFile(body);
+            });
             const mainPage = fs.readFileSync("index.html");
             response.writeHead(200, { "content-type": "text/html" });
             response.end(mainPage);
@@ -61,17 +82,19 @@ const server = http.createServer(function (request, response) {
             const mainPage = fs.readFileSync(`${url}`);
             response.writeHead(200, { "content-type": "text/javascript" });
             response.end(mainPage);
-        } else if (url === "/notice") {
-            request.on("data", function (data) {
-                body += data;
-            });
-            request.on("end", function () {
-                writeFile(body);
-            });
-            console.log(url);
-            const mainPage = fs.readFileSync("pages/notice.html");
-            response.writeHead(200, { "content-type": "text/html" });
-            response.end(mainPage);
+            // } else if (url === "/notice") {
+            //     console.log(url);
+            //     const mainPage = fs.readFileSync("pages/notice.html");
+            //     response.writeHead(200, { "content-type": "text/html" });
+            //     response.end(mainPage);
+        } else if (url.startsWith("/modifyPage")) {
+            // delete page
+            // console.log(request.params.id);
+            const deleteNum = num(url);
+            deleteJsonNum(deleteNum);
+            // const num = url.
+            response.writeHead(302, { location: "/" });
+            response.end();
         } else {
             // 요청 예외처리
             const mainPage = fs.readFileSync("errPages/posterr.html");
@@ -99,3 +122,23 @@ function deleteJsonNum(deleteNum) {
     console.log(reJsonData);
     fs.writeFileSync("data.json", reJsonData);
 }
+
+// function detailNum(num) {
+//     fetch("/data.json")
+//         .then((response) => {
+//             return response.json();
+//         })
+//         .then((data) => {
+//             console.log(data);
+//             const detailTable = document.getElementById("detailTable");
+//             // for (let index = 0; index < data.length; index++) {
+//             detailTable.innerHTML += `
+//       <div>
+//         <p>${data.id[num]}</p>
+//         <p> ${data.inputName[num]}</p>
+//         <p> ${data.timestamp[num]}</p>
+//       </div>
+//     `;
+//             // }
+//         });
+// }

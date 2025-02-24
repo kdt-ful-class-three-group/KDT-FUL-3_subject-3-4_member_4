@@ -2,6 +2,7 @@
 
 console.log("연결완");
 
+// 메인 테이블 뿌려주기
 let xhr = new XMLHttpRequest();
 xhr.open("GET", "data.json", true);
 xhr.onreadystatechange = function () {
@@ -27,21 +28,21 @@ xhr.send();
 
 // }
 // function dataDelete() {
+// 상세페이지, 삭제
 fetch("/data.json")
     .then((response) => {
         return response.json();
     })
     .then((data) => {
         let deleteBtn = document.querySelectorAll(".delBtn");
-        let detileBtn = document.querySelectorAll(".detBtn");
-        // let deleteBtn = document.getElementById("delBtn");
+        let detailBtn = document.querySelectorAll(".detBtn");
         data.forEach((element, i) => {
             deleteBtn[i].addEventListener("click", () => {
                 location.href = `/deletePage/${element.id}`;
             });
-            detileBtn[i].addEventListener("click", () => {
-              location.href = `/deletePage/${element.id}`;
-          });
+            detailBtn[i].addEventListener("click", () => {
+                location.href = `/detailPage/${element.id}`;
+            });
             console.log(element);
         });
     });
