@@ -48,7 +48,7 @@ const server = http.createServer(function (request, response) {
             const mainPage = fs.readFileSync("pages/notice.html");
             response.writeHead(200, { "content-type": "text/html" });
             const deleteNum = num(url);
-            detailNum(deleteNum);
+            // detailNum(deleteNum);
             //* 해당 번호만 뽑아내는거
             response.end(mainPage);
         } else {
@@ -75,11 +75,11 @@ const server = http.createServer(function (request, response) {
             const mainPage = fs.readFileSync(`${url}`);
             response.writeHead(200, { "content-type": "text/javascript" });
             response.end(mainPage);
-        } else if (url === "/notice") {
-            console.log(url);
-            const mainPage = fs.readFileSync("pages/notice.html");
-            response.writeHead(200, { "content-type": "text/html" });
-            response.end(mainPage);
+            // } else if (url === "/notice") {
+            //     console.log(url);
+            //     const mainPage = fs.readFileSync("pages/notice.html");
+            //     response.writeHead(200, { "content-type": "text/html" });
+            //     response.end(mainPage);
         } else if (url.startsWith("/modifyPage")) {
             // delete page
             // console.log(request.params.id);
