@@ -83,8 +83,8 @@ const server = http.createServer(function (request, response) {
             let body = "";
 
             // 요청 본문을 읽기
-            request.on("data", (chunk) => {
-                body += chunk.toString(); // 버퍼를 문자열로 변환
+            request.on("data", (data) => {
+                body += data.toString(); // 버퍼를 문자열로 변환
             });
 
             request.on("end", () => {
@@ -93,9 +93,10 @@ const server = http.createServer(function (request, response) {
                     "data.json",
                     JSON.stringify(updatedData, null, 2)
                 );
-
+                // writeFile(updatedData);
+                const mainPage = fs.readFileSync("index.html");
                 response.writeHead(200, { "content-type": "application/json" });
-                response.end(JSON.stringify({ message: "업데이트 성공" }));
+                response.end(mainPage);
             });
         } else if (url.endsWith(".js")) {
             const mainPage = fs.readFileSync(`${url}`);

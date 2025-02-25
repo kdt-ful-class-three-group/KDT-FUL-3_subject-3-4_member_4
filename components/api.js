@@ -42,30 +42,25 @@ fetch("/data.json")
             });
             detailBtn[i].addEventListener("click", () => {
                 // location.href = `/detailPage/${element.id}`;
-                for (let index = 0; index < data.length; index++) {
-                    divDom.innerHTML = `
+                // for (let index = 0; index < data.length; index++) {
+                divDom.innerHTML = `
                <div>
-                <p id="dataId">${data[index].id}</p>
-                <input id="inputName" type="text" name="inputName" placeholder="${
-                    data[index].inputName
-                }">
-                <p id="dataTime"> ${data[index].timestamp}</p>
-                <button class="soveBtn" data-index="${index + 1}" >저장</button>
+                <p id="dataId">${data[i].id}</p>
+                <input id="inputName" type="text" name="inputName" placeholder="${data[i].inputName}">
+                <p id="dataTime"> ${data[i].timestamp}</p>
+                <button class="soveBtn" >저장</button>
                 <button class="delBtn">삭제</button>
               </div>
               `;
-                    const saveButton = divDom.querySelector(".soveBtn");
-                    saveButton.addEventListener(
-                        "click",
-                        updateData(detailBtn[i])
-                    );
-                }
+                const saveButton = divDom.querySelector(".soveBtn");
+                saveButton.addEventListener("click", () => updateData(i)); // 수정된 부분
+                // }
             });
             // console.log(element);
         });
     });
 
-function updateData(index) {
+async function updateData(index) {
     console.log(index);
     const id = document.getElementById("dataId").innerText;
     const inputName = document.getElementById("inputName").value;
@@ -81,6 +76,7 @@ function updateData(index) {
     fetch(`http://localhost:8000/data.json`)
         .then((res) => res.json())
         .then((data) => {
+            location.href = `/`;
             const index = data.findIndex((item) => item.id == id);
             if (index !== -1) {
                 data[index] = updatedInfo;
