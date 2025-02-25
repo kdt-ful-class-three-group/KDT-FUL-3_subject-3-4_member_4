@@ -2,11 +2,11 @@
 
 console.log("연결완");
 
+let divDom = document.getElementById("tableList");
 // 메인 테이블 뿌려주기
 let xhr = new XMLHttpRequest();
 xhr.open("GET", "data.json", true);
 xhr.onreadystatechange = function () {
-    let divDom = document.getElementById("tableList");
     if (xhr.readyState === 4 && xhr.status === 200) {
         let dataList = JSON.parse(xhr.responseText);
         for (let index = 0; index < dataList.length; index++) {
@@ -15,7 +15,7 @@ xhr.onreadystatechange = function () {
               <p>${dataList[index].id}</p>
               <p> ${dataList[index].inputName}</p>
               <p> ${dataList[index].timestamp}</p>
-              <button class="detBtn">수정</button>
+              <button class="detBtn" data-inedx="${index + 1}">수정</button>
               <button class="delBtn">삭제</button>
             </div>
         `;
@@ -41,10 +41,57 @@ fetch("/data.json")
                 location.href = `/deletePage/${element.id}`;
             });
             detailBtn[i].addEventListener("click", () => {
-                location.href = `/detailPage/${element.id}`;
+                // location.href = `/detailPage/${element.id}`;
+                for (let index = 0; index < data.length; index++) {
+                    divDom.innerHTML = `
+               <div>
+                <p id="dataId">${data[index].id}</p>
+                <input id="inputName" type="text" name="inputName" placeholder="${
+                    data[index].inputName
+                }">
+                <p id="dataTime"> ${data[index].timestamp}</p>
+                <button class="detBtn" data-inedx="${index + 1}">저장</button>
+                <button class="delBtn">삭제</button>
+              </div>
+              `;
+                }
             });
+
             console.log(element);
         });
     });
-//     console.log("실행");
-// }
+
+async function updateData() {
+    const id = document.getElementById("dataId");
+    const name = document.getElementById("inputName");
+    const time = document.getElementById("dataTime");
+
+    const updatedInfo = {
+        id: id.textContent,
+        name: name.value,
+        time: time.textContent,
+    };
+    console.log(updatedInfo);
+    // try {
+    //     const response = await fetch(`http://localhost:3000/data/${id}`, {
+    //         method: "PUT",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify(updatedInfo),
+    //     });
+
+    //     if (!response.ok) {
+    //         throw new Error("수정 실패");
+    //     }
+
+    //     const result = await response.json();
+    //     document.getElementById("result").textContent = JSON.stringify(
+    //         result,
+    //         null,
+    //         2
+    //     );
+    // } catch (error) {
+    //     console.error("오류:", error);
+    //     alert("수정 중 오류가 발생했습니다.");
+    // }
+}
+updateData();

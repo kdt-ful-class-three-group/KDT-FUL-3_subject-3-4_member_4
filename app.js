@@ -40,46 +40,16 @@ const server = http.createServer(function (request, response) {
             response.writeHead(302, { location: "/" });
             response.end();
         } else if (url.startsWith("/modifyPage")) {
-            const deleteNum = num(url);
-            deleteJsonNum(deleteNum);
             response.writeHead(302, { location: "/" });
             response.end();
         } else if (url.startsWith("/detailPage")) {
             // let deleteNum = num(url);
+            // console.log(request.headers);
             // detailNum(deleteNum);
             const mainPage = fs.readFileSync("pages/notice.html");
             response.writeHead(200, { "Content-Type": "text/html" });
             // //* 해당 번호만 뽑아내는거
             response.end(mainPage);
-            // const deleteNum = num(url);
-            // fs.readFile("data.json", "utf8", (err, data) => {
-            //     if (err) {
-            //         response.writeHead(500, { "Content-Type": "text/plain" });
-            //         response.end("Server Error");
-            //         return;
-            //     }
-            //     const jsonData = JSON.parse(data);
-            //     const detailData = jsonData.find(
-            //         (item) => item.id == deleteNum
-            //     );
-            //     response.writeHead(200, { "Content-Type": "application/json" });
-            //     response.end(JSON.stringify(detailData)); // 데이터만 클라이언트에 전달
-            // });
-        } else if (url.startsWith("/getDetailData")) {
-            // JSON 파일에서 특정 ID의 데이터를 찾아 반환하는 API
-            const urlParams = new URL(url, `http://${request.headers.host}`);
-            const id = urlParams.searchParams.get("id");
-            fs.readFile("data.json", "utf8", (err, data) => {
-                if (err) {
-                    response.writeHead(500, { "Content-Type": "text/plain" });
-                    response.end("Server Error");
-                    return;
-                }
-                const jsonData = JSON.parse(data);
-                const detailData = jsonData.find((item) => item.id == id);
-                response.writeHead(200, { "Content-Type": "application/json" });
-                response.end(JSON.stringify(detailData));
-            });
         } else {
             console.log(url);
             // 서버 요청 예외처리
