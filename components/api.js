@@ -1,5 +1,3 @@
-// let arrJson = [];
-
 console.log("연결완");
 
 let divDom = document.getElementById("tableList");
@@ -23,12 +21,7 @@ xhr.onreadystatechange = function () {
     }
 };
 xhr.send();
-// function fun(index) {
-//   index 0~json~
 
-// }
-// function dataDelete() {
-// 상세페이지, 삭제
 fetch("/data.json")
     .then((response) => {
         return response.json();
@@ -41,8 +34,6 @@ fetch("/data.json")
                 location.href = `/deletePage/${element.id}`;
             });
             detailBtn[i].addEventListener("click", () => {
-                // location.href = `/detailPage/${element.id}`;
-                // for (let index = 0; index < data.length; index++) {
                 divDom.innerHTML = `
                <div>
                 <p id="dataId">${data[i].id}</p>
@@ -53,14 +44,15 @@ fetch("/data.json")
               </div>
               `;
                 const saveButton = divDom.querySelector(".soveBtn");
-                saveButton.addEventListener("click", () => updateData(i)); 
+                saveButton.addEventListener("click", () => updateData(i));
                 // }
             });
-            // console.log(element);
+        }).catch((error) => {
+            console.log("에러" + error);
         });
     });
 
-async function updateData(index) {
+function updateData(index) {
     console.log(index);
     const id = document.getElementById("dataId").innerText;
     const inputName = document.getElementById("inputName").value;
@@ -71,7 +63,7 @@ async function updateData(index) {
         inputName: inputName,
         timestamp: timestamp,
     };
-    console.log(updatedInfo);
+    console.log(updatedInfo); // 수정해서 jsons에 넣을 객체
 
     fetch(`http://localhost:8000/data.json`)
         .then((res) => res.json())
@@ -79,16 +71,19 @@ async function updateData(index) {
             location.href = `/`;
             const index = data.findIndex((item) => item.id == id);
             if (index !== -1) {
-                data[index] = updatedInfo;
+                data[index] = updatedInfo; // 해당 index에 바꿔치기
                 fetch(`http://localhost:8000/update`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify(data),
+                    body: JSON.stringify(data, null, 2),
+                }).catch((error) => {
+                    console.log("에러" + error);
                 });
             }
+        })
+        .catch((error) => {
+            console.log("에러" + error);
         });
-
-    // });
 }

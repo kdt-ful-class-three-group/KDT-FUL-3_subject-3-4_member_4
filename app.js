@@ -88,12 +88,11 @@ const server = http.createServer(function (request, response) {
             });
 
             request.on("end", () => {
-                const updatedData = JSON.parse(body);
-                fs.writeFileSync(
-                    "data.json",
-                    JSON.stringify(updatedData, null, 2)
-                );
-                // writeFile(updatedData);
+                // const updatedData = JSON.parse(body);
+                // fs.writeFileSync(
+                //     "data.json",
+                //     JSON.stringify(updatedData, null, 2)
+                // );
                 const mainPage = fs.readFileSync("index.html");
                 response.writeHead(200, { "content-type": "application/json" });
                 response.end(mainPage);
