@@ -62,7 +62,7 @@ fetch("/data.json")
         });
     });
 
-async function updateData() {
+function updateData() {
     // let updateBtn = document.getElementById("updateData");
     // updateBtn.addEventListener("cilck", () => {
     const id = document.getElementById("dataId").innerText;
@@ -77,25 +77,10 @@ async function updateData() {
     console.log(updatedInfo);
     // });
 
-    // try {
-    //     const response = await fetch(`http://localhost:3000/data/${id}`, {
-    //         method: "PUT",
-    //         headers: { "Content-Type": "application/json" },
-    //         body: JSON.stringify(updatedInfo),
-    //     });
-
-    //     if (!response.ok) {
-    //         throw new Error("수정 실패");
-    //     }
-
-    //     const result = await response.json();
-    //     document.getElementById("result").textContent = JSON.stringify(
-    //         result,
-    //         null,
-    //         2
-    //     );
-    // } catch (error) {
-    //     console.error("오류:", error);
-    //     alert("수정 중 오류가 발생했습니다.");
-    // }
+    fetch(`http://localhost:8000/data.json`)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            // location.href = `/`;
+        });
 }
