@@ -50,26 +50,30 @@ fetch("/data.json")
                     data[index].inputName
                 }">
                 <p id="dataTime"> ${data[index].timestamp}</p>
-                <button class="detBtn" data-inedx="${index + 1}">저장</button>
+                <button class="detBtn" data-inedx="${
+                    index + 1
+                }" id="updateData">저장</button>
                 <button class="delBtn">삭제</button>
               </div>
               `;
                 }
+                updateData();
             });
-
-            console.log(element);
+            // console.log(element);
         });
     });
 
 async function updateData() {
-    const id = document.getElementById("dataId");
-    const name = document.getElementById("inputName");
-    const time = document.getElementById("dataTime");
+    let updateBtn = document.getElementById("updateData");
+    updateBtn.addEventListener("cilck", () => {});
+    const id = document.getElementById("dataId").innerText;
+    const name = document.getElementById("inputName").value;
+    const time = document.getElementById("dataTime").innerText;
 
     const updatedInfo = {
-        id: id.textContent,
-        name: name.value,
-        time: time.textContent,
+        id: id,
+        name: name,
+        time: time,
     };
     console.log(updatedInfo);
     // try {
@@ -94,4 +98,3 @@ async function updateData() {
     //     alert("수정 중 오류가 발생했습니다.");
     // }
 }
-updateData();
