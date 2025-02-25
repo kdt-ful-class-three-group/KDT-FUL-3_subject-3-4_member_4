@@ -53,7 +53,7 @@ fetch("/data.json")
               </div>
               `;
                 const saveButton = divDom.querySelector(".soveBtn");
-                saveButton.addEventListener("click", () => updateData(i)); // 수정된 부분
+                saveButton.addEventListener("click", () => updateData(i)); 
                 // }
             });
             // console.log(element);
