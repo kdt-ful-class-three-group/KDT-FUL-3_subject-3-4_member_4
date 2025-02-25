@@ -50,22 +50,21 @@ fetch("/data.json")
                     data[index].inputName
                 }">
                 <p id="dataTime"> ${data[index].timestamp}</p>
-                <button class="detBtn" data-inedx="${
-                    index + 1
-                }" id="updateData">저장</button>
+                <button class="soveBtn" data-index="${index + 1}" >저장</button>
                 <button class="delBtn">삭제</button>
               </div>
               `;
+                    const saveButton = divDom.querySelector(".soveBtn");
+                    saveButton.addEventListener("click", updateData);
                 }
-                updateData();
             });
             // console.log(element);
         });
     });
 
 async function updateData() {
-    let updateBtn = document.getElementById("updateData");
-    updateBtn.addEventListener("cilck", () => {});
+    // let updateBtn = document.getElementById("updateData");
+    // updateBtn.addEventListener("cilck", () => {
     const id = document.getElementById("dataId").innerText;
     const name = document.getElementById("inputName").value;
     const time = document.getElementById("dataTime").innerText;
@@ -76,6 +75,8 @@ async function updateData() {
         time: time,
     };
     console.log(updatedInfo);
+    // });
+
     // try {
     //     const response = await fetch(`http://localhost:3000/data/${id}`, {
     //         method: "PUT",
