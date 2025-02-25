@@ -55,32 +55,44 @@ fetch("/data.json")
               </div>
               `;
                     const saveButton = divDom.querySelector(".soveBtn");
-                    saveButton.addEventListener("click", updateData);
+                    saveButton.addEventListener(
+                        "click",
+                        updateData(detailBtn[i])
+                    );
                 }
             });
             // console.log(element);
         });
     });
 
-function updateData() {
-    // let updateBtn = document.getElementById("updateData");
-    // updateBtn.addEventListener("cilck", () => {
+function updateData(index) {
+    console.log(index);
     const id = document.getElementById("dataId").innerText;
-    const name = document.getElementById("inputName").value;
-    const time = document.getElementById("dataTime").innerText;
+    const inputName = document.getElementById("inputName").value;
+    const timestamp = document.getElementById("dataTime").innerText;
 
     const updatedInfo = {
         id: id,
-        name: name,
-        time: time,
+        inputName: inputName,
+        timestamp: timestamp,
     };
     console.log(updatedInfo);
-    // });
 
     fetch(`http://localhost:8000/data.json`)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
-            // location.href = `/`;
+            const index = data.findIndex((item) => item.id == id);
+            if (index !== -1) {
+                data[index] = updatedInfo;
+                fetch(`http://localhost:8000/update`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                });
+            }
         });
+
+    // });
 }

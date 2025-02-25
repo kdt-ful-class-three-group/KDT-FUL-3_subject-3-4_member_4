@@ -70,6 +70,33 @@ const server = http.createServer(function (request, response) {
             const mainPage = fs.readFileSync("index.html");
             response.writeHead(200, { "content-type": "text/html" });
             response.end(mainPage);
+        } else if (url === "/update") {
+            // const mainPage = fs.readFileSync("data.json");
+            // response.writeHead(
+            //     200,
+            //     { "content-type": "application/json" },
+            //     () => {
+            //         console.log("성공임둥");
+            //     }
+            // );
+            // response.end(mainPage);
+            let body = "";
+
+            // 요청 본문을 읽기
+            request.on("data", (chunk) => {
+                body += chunk.toString(); // 버퍼를 문자열로 변환
+            });
+
+            request.on("end", () => {
+                const updatedData = JSON.parse(body);
+                fs.writeFileSync(
+                    "data.json",
+                    JSON.stringify(updatedData, null, 2)
+                );
+
+                response.writeHead(200, { "content-type": "application/json" });
+                response.end(JSON.stringify({ message: "업데이트 성공" }));
+            });
         } else if (url.endsWith(".js")) {
             const mainPage = fs.readFileSync(`${url}`);
             response.writeHead(200, { "content-type": "text/javascript" });
