@@ -1,21 +1,18 @@
-let divDom = document.getElementById("tableList");
+import { modify } from "./modify.js";
+import { startList } from "./startList.js";
+
 // 메인 테이블 뿌려주기
-let xhr = new XMLHttpRequest();
-xhr.open("GET", "data.json", true);
-xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-        let dataList = JSON.parse(xhr.responseText);
-        for (let index = 0; index < dataList.length; index++) {
-            divDom.innerHTML += ` 
-            <div>
-              <p>${dataList[index].id}</p>
-              <p> ${dataList[index].inputName}</p>
-              <p> ${dataList[index].timestamp}</p>
-              <button class="detBtn" data-inedx="${index + 1}">수정</button>
-              <button class="delBtn">삭제</button>
-            </div>
-        `;
+function startApi() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "data.json", true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            let dataList = JSON.parse(xhr.responseText);
+            startList(dataList); //* 처음 게시판 뿌려줌
+            modify(dataList); //* 리스트 수정 dataList = data.json
         }
-    }
-};
-xhr.send();
+    };
+    xhr.send();
+}
+
+export { startApi };

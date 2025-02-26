@@ -12,6 +12,13 @@ KDT-FUL-3_subject-3-4_member_4
 ├─ README.md
 ├─ example-application
 │ ├─ components
+│ ├─ components
+│ │ ├─ js
+│ │ │  ├─ modify.js  # 데이터 수정 기능
+│ │ │  ├─ modifyDom.js # 수정한 데이터 html 표출
+│ │ │  ├─ startApi.js  # 서버에서 데이터 받아오는 기능
+│ │ │  ├─ startList.js # 게시판 데이터 화면 표출
+│ │ │  ├─ update.js # 수정한 데이터 json파일에 추가 기능
 │ │ ├─ api.js # 통신
 │ │ ├─ readFile.js # json파일 저장
 │ │ ├─ writeFile.js # json 데이터 생성
