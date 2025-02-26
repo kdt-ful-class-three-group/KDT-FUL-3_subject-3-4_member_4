@@ -1,4 +1,5 @@
 function update(data) {
+    const updateJson = "http://localhost:8000/update";
     const id = document.getElementById("dataId").innerText;
     const inputName = document.getElementById("inputName").value;
     const timestamp = document.getElementById("dataTime").innerText;
@@ -13,7 +14,7 @@ function update(data) {
     const index = data.findIndex((item) => item.id == id);
     if (index !== -1) {
         data[index] = updatedInfo; // 해당 index에 바꿔치기
-        fetch(`http://localhost:8000/update`, {
+        fetch(updateJson, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

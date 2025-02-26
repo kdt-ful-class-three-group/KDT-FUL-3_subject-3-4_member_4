@@ -3,8 +3,9 @@ import { startList } from "./startList.js";
 
 // 메인 테이블 뿌려주기
 function startApi() {
+    const json = "data.json";
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "data.json", true);
+    xhr.open("GET", json, true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             let dataList = JSON.parse(xhr.responseText);
