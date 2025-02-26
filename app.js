@@ -126,19 +126,10 @@ function num(url) {
 }
 
 function deleteJsonNum(deleteNum) {
-    // console.log(deleteNum);
+    console.log(deleteNum);
     const readFileArr = readFile();
     const dataFilter = readFileArr.filter((data) => data.id != deleteNum);
-
-    // readFileArr.id = dataFilter.length + 1;
-    // const data =
-    for (let index = 0; index < dataFilter.length; index++) {
-        console.log((dataFilter[index].id += index + 1));
-        // dataFilter[index].id += index + 1;
-        // console.log(index + 1);
-        // console.log((dataFilter.id += dataFilter.index + 1));
-    }
-    console.log(readFileArr);
+    console.log(dataFilter);
     const reJsonData = JSON.stringify(dataFilter);
     console.log(reJsonData);
     fs.writeFileSync("data.json", reJsonData);
