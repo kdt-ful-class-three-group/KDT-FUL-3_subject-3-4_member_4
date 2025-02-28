@@ -16,5 +16,8 @@
     },
     "homepage": "https://github.com/kdt-ful-class-three-group/KDT-FUL-3_subject-3-4_member_4#readme",
     "description": "",
-    "type": "module"
+    "type": "module",
+    "dependencies": {
+        "express": "^4.21.2"
+    }
 }
